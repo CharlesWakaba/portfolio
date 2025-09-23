@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charles Wakaba Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Reset */
+        * {margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif;}
+        body {line-height:1.6; color:#333;}
+        a {text-decoration:none; color:inherit;}
+        img {max-width:100%; border-radius:8px;}
+
+        /* Container */
+        .container {width:90%; max-width:1200px; margin:0 auto;}
+
+        /* Header / Hero */
+        header {
+            background: #0b0c10;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        header h1 {font-size:3rem; margin-bottom:10px;}
+        header p {font-size:1.2rem; margin-bottom:20px;}
+        .btn {display:inline-block; background:#1f2833; color:#fff; padding:10px 20px; border-radius:5px; margin:5px; transition:0.3s;}
+        .btn:hover {background:#45a29e;}
+
+        /* About */
+        #about {padding:80px 0; background:#f5f5f5; text-align:center;}
+        #about h2 {font-size:2.5rem; margin-bottom:20px;}
+        #about p {max-width:700px; margin:0 auto 20px;}
+
+        /* Projects */
+        #projects {padding:80px 0;}
+        #projects h2 {text-align:center; font-size:2.5rem; margin-bottom:50px;}
+        .projects-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:30px;}
+        .project-card {background:#fff; border-radius:10px; padding:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s;}
+        .project-card:hover {transform:translateY(-5px);}
+        .project-card h3 {margin-bottom:15px;}
+        .project-card p {margin-bottom:15px;}
+        .project-card a {color:#45a29e; font-weight:bold;}
+
+        /* Contact */
+        #contact {padding:80px 0; background:#f5f5f5;}
+        #contact h2 {text-align:center; font-size:2.5rem; margin-bottom:50px;}
+        form {max-width:600px; margin:0 auto;}
+        form input, form textarea {width:100%; padding:15px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc;}
+        form button {background:#1f2833; color:#fff; padding:15px 30px; border:none; border-radius:5px; cursor:pointer; transition:0.3s;}
+        form button:hover {background:#45a29e;}
+
+        /* Footer */
+        footer {text-align:center; padding:20px; background:#0b0c10; color:#fff;}
+        footer a {color:#45a29e; margin:0 10px;}
+    </style>
+</head>
+<body>
+
+<!-- Header / Hero -->
+<header>
+    <h1>Charles Wakaba</h1>
+    <p>Full Stack Developer & Virtual Assistant | Building Clean & Interactive Websites</p>
+    <a href="#projects" class="btn">View My Work</a>
+    <a href="#contact" class="btn">Contact Me</a>
+</header>
+
+<!-- About -->
+<section id="about">
+    <div class="container" data-aos="fade-up">
+        <h2>About Me</h2>
+        <p>Hello! I’m Charles Wakaba, a passionate Full Stack Developer and Virtual Assistant. I specialize in building responsive, interactive, and user-friendly websites that help clients showcase their businesses effectively. I love combining clean design with practical functionality to deliver real value.</p>
+        <p><strong>Skills:</strong> HTML, CSS, JavaScript, Node.js, API Integration, Responsive Design, UI/UX, GitHub</p>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+    <div class="container" data-aos="fade-up">
+        <h2>My Work</h2>
+        <div class="projects-grid">
+            <!-- SpaceX Demo -->
+            <div class="project-card" data-aos="zoom-in">
+                <img src="assets/spacex-demo.png" alt="SpaceX Demo Screenshot">
+                <h3>SpaceX Demo</h3>
+                <p>This project showcases real-time SpaceX launch data alongside inspiring astronomical imagery. Users can explore upcoming and past launches with interactive cards and detailed views..</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JavaScript, APIs</p>
+                <a href="https://charleswakaba.github.io/spacex-demo/" target="_blank">View Live</a>
+            </div>
+
+            <!-- Website 1 -->
+            <div class="project-card" data-aos="zoom-in">
+                <img src="assets/Nairobi-hospital.png" alt="Nairobi Hospital Screenshot">
+                <h3>Nairobi Hospital</h3>
+                <p>This website showcases Nairobi Hospital’s commitment to providing world-class healthcare with a focus on patient-centered, compassionate care. It highlights key services, facilities, and medical expertise, offering visitors an intuitive and informative browsing experience. The design emphasizes professionalism, trust, and accessibility, making it easy for patients to find information and engage with hospital services..</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JS, Bootstrap</p>
+                <a href="https://charleswakaba.github.io/nairobi-hospital-demo/index.html" target="_blank">View Live</a>
+            </div>
+
+            <!-- Website 2 -->
+            <div class="project-card" data-aos="zoom-in">
+                <img src="assets/ecommerce.png" alt="ecommerce Screenshot">
+                <h3>E commerce</h3>
+                <p>This product page is part of the Globex Store demo, showcasing a clean and responsive e-commerce layout. It features a product image, title, price, and a brief description, providing users with essential product details. The design emphasizes user experience with intuitive navigation and a minimalist aesthetic..</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JS</p>
+                <a href="https://charleswakaba.github.io/e-commerce/index.html" target="_blank">View Live</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container" data-aos="fade-up">
+        <h2>Contact Me</h2>
+        <form action="mailto:charleswakaba@gmail.com" method="POST" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Charles Wakaba</p>
+    <a href="https://github.com/charleswakaba" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/charles-wakaba-9194aaa5/
+" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:charleswakaba@gmail.com"><i class="fas fa-envelope"></i></a>
+</footer>
+
+<!-- AOS Animation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });
+</script>
+
+</body>
+</html>
