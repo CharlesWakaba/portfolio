@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ClearHome — Demo Inbox</title><link rel="stylesheet" href="styles.css"></head><body>
+<div class="portfolio-return"><a href="../../index.html">← Back to portfolio</a><a href="index.html">View ClearHome website ↗</a></div><header class="wrap nav"><a class="brand" href="index.html"><span class="brand-mark">C</span>ClearHome</a><a class="nav-cta" href="index.html">← Back to website</a></header><main class="wrap admin"><span class="eyebrow">WORKFLOW DEMONSTRATION</span><h1>Demo lead inbox</h1><p class="admin-intro">Submissions made on this browser appear here. This is a local demonstration, not a shared production CRM.</p><div class="toolbar"><button onclick="render()">Refresh inbox</button><button onclick="exportCSV()">Export CSV</button><button onclick="clearLeads()">Clear demo data</button></div><div id="leads"></div></main><script>
+
+const KEY="clearhome_demo_leads";
+function getLeads() {
+  try {
+    const rows=JSON.parse(localStorage.getItem(KEY)||"[]");
+    return Array.isArray(rows)?rows:[];
+  } catch(e) { return []; }
+}
+function esc(v) {
+  return String(v ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function render() {
+  const leads=getLeads(), el=document.getElementById("leads");
+  if(!leads.length) {
+    el.innerHTML='<div class="empty">No demo enquiries yet. Submit the form on the website in this same browser to create the first record.</div>';
+    return;
+  }
+  el.innerHTML=leads.map((lead,i)=>{
+    const rows=Object.entries(lead).filter(([key])=>key!=="environment");
+    return '<article class="lead"><div><strong>Enquiry '+(i+1)+'</strong><span class="demo-tag">'+esc(lead.status||"New")+'</span></div><dl>'+
+      rows.map(([key,value])=>'<div><dt>'+esc(key.replace(/([A-Z])/g," $1").replace(/_/g," "))+'</dt><dd>'+esc(value)+'</dd></div>').join("")+
+      '</dl></article>';
+  }).join("");
+}
+function clearLeads() {
+  if(confirm("Clear all ClearHome demo enquiries from this browser?")) {
+    localStorage.removeItem(KEY); render();
+  }
+}
+function exportCSV() {
+  const rows=getLeads();
+  if(!rows.length) return alert("There are no demo enquiries to export.");
+  const cols=[...new Set(rows.flatMap(Object.keys))];
+  const safe=value=>{
+    let text=String(value??"");
+    if(/^[=+\-@\t\r]/.test(text)) text="'"+text;
+    return '"'+text.replace(/"/g,'""')+'"';
+  };
+  const csv=[cols.map(safe).join(","),...rows.map(row=>cols.map(col=>safe(row[col])).join(","))].join("\r\n");
+  const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+  const link=document.createElement("a"); link.href=url; link.download="clearhome-demo-leads.csv";
+  document.body.appendChild(link); link.click(); link.remove(); URL.revokeObjectURL(url);
+}
+render();
+
+</script></body></html>

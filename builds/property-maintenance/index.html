@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report a maintenance problem | Lantern Row Residences (concept build)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F0F2F3;--ink:#13221E;--mute:#4B5B57;--line:#C8D0CE;--hazard:#F2C200;--emerg:#B3261E;--urg:#A86400;--ok:#1B6B4A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Barlow',system-ui,sans-serif;font-size:1.05rem;line-height:1.55}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.demo{background:var(--hazard);color:#111;font-weight:600;font-size:.95rem;padding:10px 20px;text-align:center}
+.demo a{color:inherit}
+.wrap{width:min(1040px,100% - 40px);margin-inline:auto}
+header.top{background:var(--ink);color:#fff;padding:44px 0 40px;border-bottom:8px solid var(--hazard)}
+h1,h2,h3{font-family:'Barlow Condensed',sans-serif;line-height:1.05;letter-spacing:.01em}
+header.top h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:700;max-width:14ch}
+header.top p{margin-top:14px;max-width:34em;color:#C9D6D2}
+main{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;padding:48px 0 72px;align-items:start}
+h2{font-size:1.9rem;font-weight:700;margin-bottom:18px}
+label{display:block;font-weight:600;margin-bottom:6px}
+.f{margin-bottom:18px}
+input,select,textarea{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:4px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:var(--ink);outline:none}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.check input{width:22px;height:22px;margin-top:2px}
+button{font:inherit;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.35rem;background:var(--ink);color:#fff;border:0;border-radius:4px;padding:13px 30px;cursor:pointer}
+button:hover{background:#26403A}
+button:disabled{opacity:.6;cursor:wait}
+.hp{position:absolute;left:-9999px}
+aside{position:sticky;top:20px;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:22px}
+aside h2{font-size:1.4rem;margin-bottom:10px}
+.badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.5rem;padding:2px 14px;border-radius:3px;color:#fff;background:var(--ok)}
+.badge.Emergency{background:var(--emerg)}
+.badge.Urgent{background:var(--urg)}
+aside p{margin-top:12px}
+aside dl{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+aside dt{font-weight:600;font-size:.9rem;color:var(--mute)}
+aside dd{margin-bottom:10px}
+.steps{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;font-size:.95rem;color:var(--mute)}
+.steps ol{padding-left:20px}
+.result{margin-top:18px;padding:14px 16px;border-radius:4px}
+.result.ok{background:#DCEFE6;color:#0B4630}
+.result.bad{background:#F8DADA;color:#7A1414}
+.result pre{margin-top:10px;font-size:.85rem;white-space:pre-wrap;word-break:break-word}
+@media (max-width:820px){main{grid-template-columns:1fr}aside{position:static}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="demo">Concept build. Lantern Row is a fictional property and this form uses demo data only. <a href="../../index.html">Back to portfolio</a></div>
+
+<header class="top">
+  <div class="wrap">
+    <h1>Something broken? Tell us once.</h1>
+    <p>Submit your request and see how urgent we rate it. Emergencies reach the on-call owner right away. Everything else gets a ticket and a status update.</p>
+  </div>
+</header>
+
+<div class="wrap">
+<main>
+  <form id="f" novalidate>
+    <h2>Report a problem</h2>
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="row">
+      <div class="f"><label for="unit">Unit number</label><input id="unit" name="unit" placeholder="e.g. 4B" required></div>
+      <div class="f"><label for="cat">Type of problem</label>
+        <select id="cat" name="category" required>
+          <option value="">Choose one</option>
+          <option>Plumbing</option><option>Heating or cooling</option><option>Electrical</option>
+          <option>Appliance</option><option>Doors, locks or windows</option><option>Pests</option><option>Other</option>
+        </select></div>
+    </div>
+    <div class="f"><label for="desc">What's happening?</label>
+      <textarea id="desc" name="description" rows="4" placeholder="Where is it, and since when?" required></textarea></div>
+    <div class="f check"><input id="active" name="active_hazard" type="checkbox"><label for="active" style="margin:0">Water is running, there is smoke, or the problem is getting worse right now</label></div>
+    <div class="row">
+      <div class="f"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
+      <div class="f"><label for="email">Email for updates</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+    </div>
+    <button type="submit">Send request</button>
+    <div id="out" class="result" hidden role="status"></div>
+  </form>
+
+  <aside aria-live="polite">
+    <h2>Priority preview</h2>
+    <span id="badge" class="badge">Routine</span>
+    <p id="route">Queued for the next vendor visit. You get a status link by email.</p>
+    <dl>
+      <dt>Response target</dt><dd id="sla">Within 3 business days</dd>
+      <dt>Who is told</dt><dd id="who">Property manager's queue</dd>
+    </dl>
+    <div class="steps">
+      <strong>What happens after you send it</strong>
+      <ol>
+        <li>A ticket is created with this priority.</li>
+        <li>The right person is alerted.</li>
+        <li>You get an email when it's assigned and when it's closed.</li>
+      </ol>
+    </div>
+  </aside>
+</main>
+</div>
+
+<script src="../../config.js"></script>
+<script src="../../lib/form.js"></script>
+<script>
+(function(){
+  var emergency = ['gas','flood','flooding','fire','smoke','sparking','sparks','sewage','burst','carbon monoxide','no heat','exposed wire'];
+  var urgent = ['leak','leaking','no hot water','locked out','lockout','broken lock','no ac','no air','fridge','refrigerator','toilet','clog','clogged','mold','won\'t close','won\'t lock'];
+  var f = document.getElementById('f');
+  var badge = document.getElementById('badge'), route = document.getElementById('route');
+  var sla = document.getElementById('sla'), who = document.getElementById('who');
+
+  function has(text, words){ return words.some(function(w){ return text.indexOf(w) !== -1; }); }
+  function classify(){
+    var t = (f.elements.description.value + ' ' + f.elements.category.value).toLowerCase();
+    if (f.elements.active_hazard.checked || has(t, emergency)) return 'Emergency';
+    if (has(t, urgent)) return 'Urgent';
+    return 'Routine';
+  }
+  var copy = {
+    Emergency:{r:'Owner is paged by text and the on-call vendor is alerted now.', s:'Within 1 hour', w:'Owner and on-call vendor'},
+    Urgent:{r:'A vendor is assigned and you hear back the same day.', s:'Within 4 hours', w:'Property manager and vendor'},
+    Routine:{r:'Queued for the next vendor visit. You get a status link by email.', s:'Within 3 business days', w:"Property manager's queue"}
+  };
+  function paint(){
+    var p = classify(), c = copy[p];
+    badge.textContent = p; badge.className = 'badge ' + p;
+    route.textContent = c.r; sla.textContent = c.s; who.textContent = c.w;
+  }
+  ['input','change'].forEach(function(ev){ f.addEventListener(ev, paint); });
+
+  var out = document.getElementById('out');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!f.checkValidity()) {
+      out.hidden = false; out.className = 'result bad';
+      out.textContent = 'Fill in your unit, the type of problem, a description, your name and a valid email, then send again.';
+      return;
+    }
+    if (f.elements._honey.value) return;
+    var btn = f.querySelector('button'); btn.disabled = true;
+    window.submitLead('property-maintenance', {
+      unit: f.elements.unit.value.trim(),
+      category: f.elements.category.value,
+      description: f.elements.description.value.trim(),
+      active_hazard: f.elements.active_hazard.checked,
+      priority_preview: classify(),
+      name: f.elements.name.value.trim(),
+      email: f.elements.email.value.trim()
+    }).then(function(r){
+      btn.disabled = false;
+      window.showResult(out, r, 'Request sent. Check your email for your ticket link.');
+    });
+  });
+})();
+</script>
+</body>
+</html>
